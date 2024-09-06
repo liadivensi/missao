@@ -1,0 +1,46 @@
+/* Fundo da página */
+body {
+    background-color: #000000;
+    color: #f0f0f0;
+}
+
+/* Barra lateral */
+.sidebar {
+    background-color: #333333;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #222222;
+}
+
+/* Links e texto principal */
+a {
+    color: #ff69b4; /* Rosa */
+}
+
+/* Links ao passar o mouse */
+a:hover {
+    color: #ff1493; /* Rosa mais forte */
+}
+
+/* Botões */
+button, .btn {
+    background-color: #ff69b4; /* Rosa */
+    color: #ffffff;
+}
+
+button:hover, .btn:hover {
+    background-color: #ff1493; /* Rosa mais forte */
+}
+
+/* Tabelas e elementos de código */
+table, code, pre {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+/* Texto de comentário */
+.comment {
+    color: #888888;
+}
