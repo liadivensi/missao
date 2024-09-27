@@ -1,46 +1,58 @@
 /* Fundo da página */
+:root {
+    --cor-fundo: #01080E;
+    --cor-principal: #0B0D20;
+    --cor-secundaria: #212333;
+    --cor-destaque: #d3c47a;
+    --cor-texto: #D7F9FF;
+}
+
 body {
-    background-color: #000000;
-    color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    background: no-repeat left center;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Garante que a altura mínima seja a altura total da viewport */
 }
 
-/* Barra lateral */
-.sidebar {
-    background-color: #333333;
+.caixa-principal {
+    background: no-repeat right top;
+    background-color: var(--cor-principal);
+    opacity : 0.8;
+    width: 90%; /* Ajuste a largura conforme necessário */
+    max-width: 600px; /* Ajuste a largura máxima conforme necessário */
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative; /* Garante que o conteúdo fique sobre a imagem */
+    z-index: 1; /* Garante que o conteúdo fique sobre a imagem */
+    background-size: 150px;
+    margin-top: -150px;
 }
 
-/* Cabeçalho */
-header {
-    background-color: #222222;
+.caixa-alternativas{
+    margin-top: 10px;
 }
 
-/* Links e texto principal */
-a {
-    color: #ff69b4; /* Rosa */
+h1 {
+    color: var(--cor-destaque);
 }
 
-/* Links ao passar o mouse */
-a:hover {
-    color: #ff1493; /* Rosa mais forte */
+button {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto);
+    border: none;
+    border-radius: 15px;
+    padding: 15px;
+    margin-left: 10px;
+    transition: background-color 0.3s;
 }
 
-/* Botões */
-button, .btn {
-    background-color: #ff69b4; /* Rosa */
-    color: #ffffff;
-}
-
-button:hover, .btn:hover {
-    background-color: #ff1493; /* Rosa mais forte */
-}
-
-/* Tabelas e elementos de código */
-table, code, pre {
-    background-color: #1e1e1e;
-    color: #ffffff;
-}
-
-/* Texto de comentário */
-.comment {
-    color: #888888;
+button:hover {
+    background-color: var(--cor-destaque);
+    color: var(--cor-principal);
 }

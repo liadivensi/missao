@@ -1,34 +1,83 @@
+const modalidades = ["Ginástica", "Judô", "Surfe", "Vôlei"];
 
-{
-enunciado: " A Fórmula 1 está empenhada em tornar o esporte mais sustentável e reduzir a sua pegada de carbono. Uma das principais iniciativas inclui o desenvolvimento de novas tecnologias para carros mais ecológicos.",
-alternativas: A Fórmula 1 está planejando a introdução de combustíveis sintéticos e híbridos para reduzir a emissão de gases poluentes e promover a sustentabilidade no esporte.
-A Fórmula 1 continuará utilizando exclusivamente motores a combustão interna tradicionais sem qualquer mudança significativa para se tornar mais sustentável.
+//Com base na constante modalidade, 
+//Coloque o número que represente o esporte do seu grupo
+const escolha = ?;
 
- [
-{
-texto: "Em um esforço para se adaptar às crescentes preocupações ambientais, a Fórmula 1 está investindo pesadamente em tecnologias que promovem a sustentabilidade. Espera-se que as próximas gerações de carros de Fórmula 1 sejam movidas por combustível sustentável e tecnologias híbridas, com o objetivo de reduzir as emissões e o impacto ambiental do esporte.",
-afirmacao: "O futuro da Fórmula 1 está fortemente ligado ao desenvolvimento de tecnologias sustentáveis.
+document.querySelector('body').style.backgroundImage = "url('img/"+modalidades[escolha]+".png')";
+document.querySelector('title').textContent = "Missão Olímpica | "+modalidades[escolha];
+document.querySelector('h1').innerHTML = "Missão Olímpica <br> "+modalidades[escolha];
 
-"
-},
-{
-texto: "Educando amigos e familiares sobre os perigos das fake news e incentivando-os a não compartilhar conteúdos falsos que perpetuam o racismo.",
-afirmacao: "afirmacao4"
+const caixaPrincipal = document.querySelector(".caixa-principal");
+const caixaPerguntas = document.querySelector(".caixa-perguntas");
+const caixaAlternativas = document.querySelector(".caixa-alternativas");
+const caixaResultado = document.querySelector(".caixa-resultado");
+const textoResultado = document.querySelector(".texto-resultado");
+
+let atual = 0;
+let perguntaAtual;
+let historiaFinal = "";
+
+//Assim como a variável atual (acima)
+//Crie uma variável com o nome pontos que inicie com 0
+
+
+function mostraPergunta(){
+    if(atual >= perguntas[escolha].length){
+        mostraResultado();
+        return;
+    }
+    perguntaAtual = perguntas[escolha][atual];
+    caixaPerguntas.textContent = perguntaAtual.enunciado;
+    caixaAlternativas.textContent = "";
+    mostraAlternativas();
 }
-]
-enunciado: "Como podemos incentivar o uso de energia solar e
-outras formas de energia limpa, especialmente em comunidades carentes?",
-alternativas: [
-{
-texto: "Defendendo políticas públicas que subsidiem a
-energia solar para famílias de baixa renda.",
-afirmacao: "afirmacao5"
-},
-{
-texto: "Promovendo a instalação de painéis solares em
-escolas e centros comunitários de comunidades marginalizadas.",
-afirmacao: "afirmacao6"
+
+function mostraAlternativas(){
+    for(const alternativa of perguntaAtual.alternativas){
+        const botaoAlternativas = document.createElement("button");
+        botaoAlternativas.textContent = alternativa.texto;
+        botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
+        caixaAlternativas.appendChild(botaoAlternativas)
+    }
 }
-]
+
+function respostaSelecionada(opcaoSelecionada){
+    const afirmacao = opcaoSelecionada.afirmacao;
+    historiaFinal += afirmacao + " ";
+    atual++;
+    pontos += opcaoSelecionada.pontos;
+    console.log(pontos);
+    mostraPergunta();
 }
-];
+
+function mostraResultado(){
+    textoResultado.textContent = historiaFinal;
+    caixaPerguntas.textContent = "Resultado";
+    caixaAlternativas.textContent = "";
+    // chame a função podiumMedalhas aqui
+    
+}
+
+//crie uma função podiumMedalhas
+//E verifique a quantidade de pontos
+//  - Se pontos igual a 3 ganha bronze, dentro dessa condicional:
+//    Utilize a linha de código abaixo para modificar o CSS e inserir uma medalha
+//    caixaPrincipal.style.backgroundImage = "url('img/bronze.png')";
+//    altere o textContent do caixaPerguntas para "Resultado da competição: 3 pontos é BRONZE!"
+//  - Se pontos igual a 4 ganha prata
+//    Utilize a linha de código abaixo para modificar o CSS e inserir uma medalha
+//    caixaPrincipal.style.backgroundImage = "url('img/prata.png')";
+//    altere o textContent do caixaPerguntas para "Resultado da competição: 4 pontos é PRATA!"
+//  - Se pontos igual a 5 ganha ouro
+//    Utilize a linha de código abaixo para modificar o CSS e inserir uma medalha
+//    caixaPrincipal.style.backgroundImage = "url('img/ouro.png')";
+//    altere o textContent do caixaPerguntas para "Resultado da competição: 5 pontos é OURO!"
+//  - Se pontos menor que 3
+//    Utilize a linha de código abaixo para modificar o CSS e inserir uma medalha
+//    caixaPrincipal.style.backgroundImage = "url('img/perdeu.png')";
+//    altere o textContent do caixaPerguntas para "Resultado da competição: PERDEU!";
+//2 Dentro de cada SE altere o conteúdo de texto de caixaPerguntas exemplo
+//     Quando ouro coloque "Resultado da competição: 3 pontos é BRONZE!";
+
+mostraPergunta(); 
